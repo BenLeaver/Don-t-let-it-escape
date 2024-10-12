@@ -10,13 +10,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartTrapPlacementPhase();
+        //EndTrapPlacementPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void GenerateLevel()
+    {
+        //Add level generation code here
     }
 
     private void StartTrapPlacementPhase()
