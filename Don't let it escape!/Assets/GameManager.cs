@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //EndTrapPlacementPhase();
+        StartTrapPlacementPhase();
     }
 
     // Update is called once per frame
@@ -24,13 +24,16 @@ public class GameManager : MonoBehaviour
         //Add level generation code here
     }
 
-    private void StartTrapPlacementPhase()
+    public void StartTrapPlacementPhase()
     {
         TrapUI.GetComponent<Canvas>().enabled = true;
+        GameObject.Find("Player").GetComponent<PlayerManager>().StartPlacementPhase();
+        TrapUI.GetComponent<TrapManager>().TrapPanel.SetActive(true);
     }
 
-    private void EndTrapPlacementPhase()
+    public void EndTrapPlacementPhase()
     {
         TrapUI.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("Player").GetComponent<PlayerManager>().StartGamePhase();
     }
 }

@@ -39,6 +39,7 @@ public class TrapManager : MonoBehaviour
         _mousePos = Camera.main.ScreenToWorldPoint(_mousePos);
     }
 
+
     public void TrapButtonClicked()
     {
         _placingTrap = true;
@@ -52,7 +53,7 @@ public class TrapManager : MonoBehaviour
     {
         Instantiate(Trap1Prefab, _mousePos, Quaternion.identity);
         Destroy(_trapPreview);
-        TrapPanel.SetActive(true);
         _placingTrap = false;
+        GameObject.Find("GameManager").GetComponent<GameManager>().EndTrapPlacementPhase();
     }
 }
