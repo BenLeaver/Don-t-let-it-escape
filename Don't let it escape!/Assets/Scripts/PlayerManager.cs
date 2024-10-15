@@ -7,10 +7,14 @@ public class PlayerManager : MonoBehaviour
     public bool TrapPlacementMode = true;
     public Transform StartTransform;
 
-    [SerializeField]
-    private float _placementSpeed = 10f;
-    [SerializeField]
-    private Rigidbody2D rb;
+    [SerializeField] private float _placementSpeed = 10f;
+    [SerializeField] private float _gameMoveSpeed = 3f;
+    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private float maxVelocity = 10f;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +29,11 @@ public class PlayerManager : MonoBehaviour
         {
             PlacementMovement();
         }
-        else
-        {
-            GameMovement();
-        }
     }
 
     private void PlacementMovement()
     {
+        //Handles movement during placement phase
         //Player should be unaffected by gravity and should be able to move freely around the level
         if(Input.GetKey(KeyCode.W))
         {
@@ -54,8 +55,44 @@ public class PlayerManager : MonoBehaviour
 
     private void GameMovement()
     {
-        //Add game movement code here including the ability to jump
-        //Probably best to use rigidbody movement
+        //Handles movement during game phase
+        //Needs to be called from fixed update as rigidbody movement is used
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(new Vector2(_gameMoveSpeed, 0), ForceMode2D.Impulse);
+        }
+        if(Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(new Vector2(-_gameMoveSpeed, 0), ForceMode2D.Impulse);
+        }
+        if(Input.GetKey(KeyCode.W) && IsGrounded())
+        {
+            //Jump
+            rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(!TrapPlacementMode)
+        {
+            if(maxVelocity > rb.velocity.magnitude)
+            {
+                //Check whether velocity is at maximum to prevent player getting too fast
+                GameMovement();
+            }
+            else
+            {
+                //Ensures only magnitude of velocity is changed not direction
+                rb.velocity = rb.velocity.normalized * maxVelocity;
+            }
+            
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     public void StartGamePhase()
