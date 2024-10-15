@@ -100,12 +100,18 @@ public class PlayerManager : MonoBehaviour
         //Enables rigidbody and spawns player at start position
         rb.isKinematic = false;
         TrapPlacementMode = false;
-        transform.position = StartTransform.position;
+        ResetToStart();
     }
 
     public void StartPlacementPhase()
     {
         TrapPlacementMode = true;
         rb.isKinematic = true;
+    }
+
+    public void ResetToStart()
+    {
+        transform.position = StartTransform.position;
+        rb.velocity = new Vector3(0, 0, 0);
     }
 }
