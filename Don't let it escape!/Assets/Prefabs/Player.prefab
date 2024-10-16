@@ -145,13 +145,14 @@ MonoBehaviour:
   StartTransform: {fileID: 0}
   _placementSpeed: 10
   _gameMoveSpeed: 1
-  _jumpForce: 3
-  maxVelocity: 20
+  _jumpForce: 15
+  maxVelocity: 10
   rb: {fileID: -6309561864413686729}
   groundCheck: {fileID: 8018926105312608701}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  jumpInterval: 0.2
 --- !u!212 &2004609083470180765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -291,7 +292,7 @@ Transform:
   m_GameObject: {fileID: 8201133616512400570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: -0.15, y: -0.438, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

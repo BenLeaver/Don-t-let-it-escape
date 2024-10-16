@@ -14,6 +14,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float jumpInterval = 3f;
+
+    private float jumpTime;
+    private bool canJump;
 
 
     // Start is called before the first frame update
@@ -28,6 +32,15 @@ public class PlayerManager : MonoBehaviour
         if(TrapPlacementMode)
         {
             PlacementMovement();
+        }
+        if (!canJump)
+        {
+            if(jumpTime >= jumpInterval)
+            {
+                canJump = true;
+                jumpTime = 0f;
+            }
+            jumpTime += Time.deltaTime;
         }
     }
 
@@ -46,10 +59,12 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += new Vector3(_placementSpeed * -Time.deltaTime, 0, 0);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += new Vector3(_placementSpeed * Time.deltaTime, 0, 0);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 
@@ -57,18 +72,22 @@ public class PlayerManager : MonoBehaviour
     {
         //Handles movement during game phase
         //Needs to be called from fixed update as rigidbody movement is used
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && maxVelocity > rb.velocity.x)
         {
             rb.AddForce(new Vector2(_gameMoveSpeed, 0), ForceMode2D.Impulse);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) && -maxVelocity < rb.velocity.x)
         {
             rb.AddForce(new Vector2(-_gameMoveSpeed, 0), ForceMode2D.Impulse);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
-        if(Input.GetKey(KeyCode.W) && IsGrounded())
+        if(Input.GetKey(KeyCode.W) && IsGrounded() && canJump)
         {
             //Jump
+            canJump = false;
             rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+           
         }
     }
 
@@ -76,23 +95,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(!TrapPlacementMode)
         {
-            if(maxVelocity > rb.velocity.magnitude)
-            {
-                //Check whether velocity is at maximum to prevent player getting too fast
-                GameMovement();
-            }
-            else
-            {
-                //Ensures only magnitude of velocity is changed not direction
-                rb.velocity = rb.velocity.normalized * maxVelocity;
-            }
-            
+            //Check whether velocity is at maximum to prevent player getting too fast
+            GameMovement();
         }
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
     }
 
     public void StartGamePhase()
