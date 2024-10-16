@@ -7,11 +7,12 @@ public class TrapManager : MonoBehaviour
     public GameObject TrapPreviewPrefab;
     public GameObject Trap1Prefab;
     public GameObject TrapPanel;
-
+    [SerializeField] private float StartPositionRange = 5f;
 
     private Vector3 _mousePos;
     private GameObject _trapPreview;
     private bool _placingTrap = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class TrapManager : MonoBehaviour
         {
             UpdateMousePosition();
             _trapPreview.transform.position = _mousePos;
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && PositionValid())
             {
                 TrapPlaced();
             }
@@ -39,6 +40,16 @@ public class TrapManager : MonoBehaviour
         _mousePos = Camera.main.ScreenToWorldPoint(_mousePos);
     }
 
+    private bool PositionValid()
+    {
+        Vector3 startPos = GameObject.Find("Start").GetComponent<Transform>().position;
+        float distance = (_mousePos - startPos).magnitude;
+        if(distance < StartPositionRange)
+        {
+            return false;
+        }
+        return true;
+    }
 
     public void TrapButtonClicked()
     {

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrapPreviewPrefab: {fileID: 1523573836556688443, guid: 73ceb0ada649a1d47b8c8c95493c5714, type: 3}
-  Trap1Prefab: {fileID: 1523573836556688443, guid: 861b3182be78ab84587bfb7b39acc902, type: 3}
+  Trap1Prefab: {fileID: 1523573836556688443, guid: cf0fdd0de56b47e43991cf4f4e5c58f3, type: 3}
   TrapPanel: {fileID: 1037259607885372964}
 --- !u!1 &5479276826750126556
 GameObject:

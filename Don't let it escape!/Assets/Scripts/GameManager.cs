@@ -33,11 +33,13 @@ public class GameManager : MonoBehaviour
         TrapUI.GetComponent<Canvas>().enabled = true;
         GameObject.Find("Player").GetComponent<PlayerManager>().StartPlacementPhase();
         TrapUI.GetComponent<TrapManager>().TrapPanel.SetActive(true);
+        GameObject.Find("Start").GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void EndTrapPlacementPhase()
     {
         TrapUI.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("Start").GetComponent<SpriteRenderer>().enabled = false;
         GameObject.Find("Player").GetComponent<PlayerManager>().StartGamePhase();
     }
 

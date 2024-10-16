@@ -111,12 +111,20 @@ public class PlayerManager : MonoBehaviour
         rb.isKinematic = false;
         TrapPlacementMode = false;
         ResetToStart();
+        //Resetting transparency
+        Color tmp = GetComponent<SpriteRenderer>().color;
+        tmp.a = 1f;
+        GetComponent<SpriteRenderer>().color = tmp;
     }
 
     public void StartPlacementPhase()
     {
         TrapPlacementMode = true;
         rb.isKinematic = true;
+        //Making sprite transparent
+        Color tmp = GetComponent<SpriteRenderer>().color;
+        tmp.a = 0.5f;
+        GetComponent<SpriteRenderer>().color = tmp;
     }
 
     public void ResetToStart()
