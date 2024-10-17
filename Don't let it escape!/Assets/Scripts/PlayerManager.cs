@@ -86,6 +86,7 @@ public class PlayerManager : MonoBehaviour
         {
             //Jump
             canJump = false;
+            GameObject.Find("GameManager").GetComponent<AudioManager>().Play("Jump");
             rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
            
         }

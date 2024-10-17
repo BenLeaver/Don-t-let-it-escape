@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TrapManager : MonoBehaviour
 {
     public GameObject TrapPreviewPrefab;
     public GameObject Trap1Prefab;
     public GameObject TrapPanel;
+    public TMP_Text TrapText;
     [SerializeField] private float StartPositionRange = 5f;
 
     private Vector3 _mousePos;
@@ -54,7 +55,6 @@ public class TrapManager : MonoBehaviour
     public void TrapButtonClicked()
     {
         _placingTrap = true;
-        Debug.Log("Trap 1 Clicked!");
         TrapPanel.SetActive(false);
         UpdateMousePosition();
         _trapPreview = Instantiate(TrapPreviewPrefab, _mousePos, Quaternion.identity);
@@ -66,5 +66,10 @@ public class TrapManager : MonoBehaviour
         Destroy(_trapPreview);
         _placingTrap = false;
         GameObject.Find("GameManager").GetComponent<GameManager>().EndTrapPlacementPhase();
+    }
+
+    public void UpdateTrapText(string text)
+    {
+        TrapText.text = text;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 506050309048821104}
   - component: {fileID: 1791551897647222768}
+  - component: {fileID: 3623078935724812178}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,5 +45,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d8b9421a04aa64081848e8706180f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPlayer: 1
+  TrapPlayer: 1
+  GamePlayer: 2
   TrapUI: {fileID: 0}
+--- !u!114 &3623078935724812178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595509211109751199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56639eb13c79c2429b9dfc0653c2344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Music1
+    clip: {fileID: 8300000, guid: c775aa09ba6c233469996e3f24228e11, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Music2
+    clip: {fileID: 8300000, guid: c2c19951ab48e9e46be2bc94e17d7804, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Music4
+    clip: {fileID: 8300000, guid: 42606ed18ce7a05478eb869b9ff00b13, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 48733f914c6affc4992060a696b180e3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: c0823c7beeaacb54fb57d04cfb571bcd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Select
+    clip: {fileID: 8300000, guid: e85d5de9ca09b7a488b08afc15cc93ec, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 2f6ba2621c717ca47a21f5b112d46c3b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TrapPlace
+    clip: {fileID: 8300000, guid: ee03328d9eb438748ba47c8a5bded4d8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
