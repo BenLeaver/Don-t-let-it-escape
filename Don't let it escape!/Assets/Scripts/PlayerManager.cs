@@ -8,8 +8,8 @@ public class PlayerManager : MonoBehaviour
     public Transform StartTransform;
 
     [SerializeField] private float _placementSpeed = 10f;
-    [SerializeField] private float _gameMoveSpeed = 3f;
-    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private float _gameMoveSpeed = 2.5f;
+    [SerializeField] private float _jumpForce = 4f;
     [SerializeField] private float maxVelocity = 10f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour
             rb.AddForce(new Vector2(-_gameMoveSpeed, 0), ForceMode2D.Impulse);
             GetComponent<SpriteRenderer>().flipX = true;
         }
-        if(Input.GetKey(KeyCode.W) && IsGrounded() && canJump)
+        if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) && IsGrounded() && canJump)
         {
             //Jump
             canJump = false;
