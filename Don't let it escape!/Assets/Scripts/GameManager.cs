@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -56,5 +57,6 @@ public class GameManager : MonoBehaviour
     {
         //TODO: Make this display as UI
         Debug.Log("Player" + TrapPlayer + " wins!");
+        SceneManager.LoadScene("EndMenu");
     }
 }
