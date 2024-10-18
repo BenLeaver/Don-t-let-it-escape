@@ -61204,9 +61204,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1273591065186851590, guid: ee1619230262da443b0f0236ca4dbae8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2649293118738280196, guid: ee1619230262da443b0f0236ca4dbae8, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649293118738280196, guid: ee1619230262da443b0f0236ca4dbae8, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3498562918079027770, guid: ee1619230262da443b0f0236ca4dbae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -61247,6 +61255,10 @@ PrefabInstance:
     - target: {fileID: 3498562918079027770, guid: ee1619230262da443b0f0236ca4dbae8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201133616512400570, guid: ee1619230262da443b0f0236ca4dbae8, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -84462,6 +84474,12 @@ PrefabInstance:
     - target: {fileID: 5479276826750126556, guid: 2d8a901a0d71cd145ad49ec170362fab, type: 3}
       propertyPath: m_Name
       value: Button (Spike)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280471624790791356, guid: 2d8a901a0d71cd145ad49ec170362fab, type: 3}
+      propertyPath: m_text
+      value: 'Choose a trap to place
+
+        Press "f" to flip'
       objectReference: {fileID: 0}
     - target: {fileID: 7444607098451204232, guid: 2d8a901a0d71cd145ad49ec170362fab, type: 3}
       propertyPath: m_Pivot.x
